@@ -30,6 +30,8 @@ public class LastAccessTime {
       } else {
         log.info("lastAccessTime: " + getLastAccessTime().toString());
       }
+      Thread.sleep(500);
+      log.info("lastAccessTime: " + getLastAccessTime().toString());
     } catch (Exception e) {
       log.error(e.getMessage(), e);
     }

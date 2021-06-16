@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off">
+
+  <!-- AppenterやLoggerで使用するプロパティを定義する -->
+  <Properties>
+    <Property name="pattern">[%d{yyyy/MM/dd HH:mm:ss}] %-5p [%t] %l %m%n</Property>
+    <Property name="guid">05645326-4b1a-4d9a-b23e-fab350449ca9</Property>
+  </Properties>
+
+  <!-- ログの出力先と出力フォーマットを設定する -->
+  <Appenders>
+    <Console name="STDOUT">
+      <PatternLayout>
+        <Pattern>${pattern}</Pattern>
+      </PatternLayout>
+    </Console>
+    <File name="FILE" fileName="${sys:java.io.tmpdir}/${guid}.log" append="false">
+      <PatternLayout>
+        <Pattern>${pattern}</Pattern>
+      </PatternLayout>
+    </File>
+  </Appenders>
+
+  <!-- パッケージごとにAppenderとログレベルを組み合わせる -->
+  <Loggers>
+    <Root level="INFO">
+      <AppenderRef ref="STDOUT" />
+      <AppenderRef ref="FILE" />
+    </Root>
+  </Loggers>
+</Configuration>
